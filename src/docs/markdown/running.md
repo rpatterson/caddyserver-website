@@ -281,27 +281,7 @@ This assumes you're using [Docker Compose V2](https://docs.docker.com/compose/re
 
 ### Setup
 
-First, create a file `compose.yml` (or add this service to your existing file):
-
-```yaml
-services:
-  caddy:
-    image: caddy:<version>
-    restart: unless-stopped
-    ports:
-      - "80:80"
-      - "443:443"
-      - "443:443/udp"
-    volumes:
-      - ./conf:/etc/caddy
-      - ./site:/srv
-      - caddy_data:/data
-      - caddy_config:/config
-
-volumes:
-  caddy_data:
-  caddy_config:
-```
+First, create [a `compose.yml` file](/resources/compose.yml) (or add that service to your existing file).
 
 Make sure to fill in the image `<version>` with the latest version number, which you can find listed on [Docker Hub](https://hub.docker.com/_/caddy) under the "Tags" section.
 
