@@ -1,2 +1,5 @@
 _gitignore/
 .DS_Store
+
+# Always ignore common backup files suffixes/extensions:
+*~
