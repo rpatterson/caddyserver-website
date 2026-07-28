@@ -13,11 +13,15 @@ services:
       - "${LAN_IP:-localhost}:443:443"
       - "${LAN_IP:-localhost}:443:443/udp"
     volumes:
-      - "./conf:/etc/caddy"
-      - "./site:/srv"
-      - "caddy_data:/data"
-      - "caddy_config:/config"
+      - "./caddy/etc/caddy/:/etc/caddy/"
+      - "./caddy/srv:/srv"
+      # Uncomment here and under 'volumes:' below to have Docker manage variable data:
+      # - "caddy_data:/data"
+      # - "caddy_config:/config"
+      # Uncomment here to manage variable data locally in the project/deployment:
+      # - "./caddy/data:/data"
+      # - "./caddy/config:/config"
 
-volumes:
-  caddy_data:
-  caddy_config:
+# volumes:
+#   caddy_data:
+#   caddy_config:
