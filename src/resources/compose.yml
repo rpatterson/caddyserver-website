@@ -1,7 +1,8 @@
 # Example/reference Docker Compose deployment configuration:
 services:
   caddy:
-    image: "caddy:<version>"
+    image: "caddy:alpine"
+    container_name: "caddy"
     restart: "unless-stopped"
     ports:
       # Avoid unintentional WAN leaks, map ports only on '127.0.0.1' by default. Set
