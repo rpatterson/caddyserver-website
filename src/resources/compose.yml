@@ -4,9 +4,14 @@ services:
     image: "caddy:<version>"
     restart: "unless-stopped"
     ports:
-      - "80:80"
-      - "443:443"
-      - "443:443/udp"
+      # Avoid unintentional WAN leaks, map ports only on '127.0.0.1' by default. Set
+      # 'LAN_IP=192.168.1....' to a different IP address in './.env' to bind to that
+      # address instead:
+      # The HTTP port:
+      - "${LAN_IP:-localhost}:80:80"
+      # The HTTPs port:
+      - "${LAN_IP:-localhost}:443:443"
+      - "${LAN_IP:-localhost}:443:443/udp"
     volumes:
       - "./conf:/etc/caddy"
       - "./site:/srv"
