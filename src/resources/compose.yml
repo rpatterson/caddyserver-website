@@ -15,7 +15,11 @@ services:
       - "${LAN_IP:-localhost}:443:443/udp"
     volumes:
       - "./caddy/etc/caddy/:/etc/caddy/"
-      - "./caddy/srv:/srv"
+      - type: "bind"
+        source: "./caddy/srv/"
+        target: "/srv/"
+        bind:
+          propagation: "rshared"
       # Uncomment here and under 'volumes:' below to have Docker manage variable data:
       # - "caddy_data:/data"
       # - "caddy_config:/config"
